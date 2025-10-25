@@ -35,14 +35,11 @@ RUN npm run postinstall
 
 RUN npm run build
 
-# Final stage (solo copy)
-FROM alpine:3.18
-WORKDIR /usr/share/app
+# --- Etapa final (para Traefik) ---
+FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
 COPY --from=builder /app/web/ ./
-
-# Exponer puerto interno
 EXPOSE 80
-CMD ["sh", "-c", "while true; do sleep 3600; done"]
 
 # # Etapa final con apache
 # FROM httpd:2.4

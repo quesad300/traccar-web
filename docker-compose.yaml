@@ -1,0 +1,24 @@
+services: 
+  traccar-transportes-fraylescanos-ui:
+    build:
+      context: ./legacy
+    ports:
+      - "3001:80"
+    restart: unless-stopped
+    depends_on:
+      - traccar
+    volumes:
+      - traccar_transportes_fraylescanos:/var/www/html
+    networks:
+        - general_network
+        - traefik_public
+
+volumes:
+  traccar_transportes_fraylescanos:
+
+networks:
+  traefik_public:
+    external: true
+
+  general_network:
+    external: true
