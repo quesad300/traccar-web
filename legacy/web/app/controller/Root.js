@@ -225,6 +225,13 @@ Ext.define('Traccar.controller.Root', {
         this.beepSound.play();
     },
 
+    beepSos: function () {
+        if (!this.beepSoundSos) {
+            this.beepSoundSos = new Audio('sos.mp3');
+        }
+        this.beepSoundSos.play();
+    },
+
     soundPressed: function () {
         var soundButton = Ext.getCmp('soundButton');
         return soundButton && soundButton.pressed;

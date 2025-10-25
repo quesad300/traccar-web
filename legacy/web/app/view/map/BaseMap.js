@@ -137,7 +137,34 @@ Ext.define('Traccar.view.map.BaseMap', {
                         url: 'https://{a-c}-tiles.locationiq.com/v3/streets/r/{z}/{x}/{y}.png?key=' + locationIqKey,
                         attributions: '&copy; <a href="https://locationiq.com/">LocationIQ</a>'
                     })
-                })
+                }),
+                new ol.layer.Tile({
+                    title: Strings.mapGoogleRoad,
+                    type: 'base',
+                    visible: type === 'googleRoadMaps',
+                    source: new ol.source.XYZ({
+                        url: 'https://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga',
+                        attributions: '© Google'
+                    })
+                }),
+                 new ol.layer.Tile({
+                    title: Strings.mapGoogleSatellite,
+                    type: 'base',
+                    visible: type === 'googleSatelliteMaps',
+                    source: new ol.source.XYZ({
+                        url: 'https://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}&s=Ga',
+                        attributions: '© Google'
+                    })
+                }),
+                 new ol.layer.Tile({
+                    title: Strings.mapGoogleHybrid,
+                    type: 'base',
+                    visible: type === 'googleHybridMaps',
+                    source: new ol.source.XYZ({
+                        url: 'https://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}&s=Ga',
+                        attributions: '© Google'
+                    })
+                }),
             ]
         });
 
